@@ -23,7 +23,7 @@ Copy the configuration JSON file, and update it with your CCB credentials:
 To import JGroups from their Google Spreadsheet to CCB, please:
 
 	Follow the steps for "Installing" above.
-	Export them as groups.csv, and save that file in to this directory.
+	Export the spreadsheet as groups.csv, and save that file in to this directory.
 	In a terminal, `cd` in to this directory, then run `node import.js`.
 
 # Running
