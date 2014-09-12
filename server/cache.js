@@ -17,14 +17,18 @@ function refresh() {
   console.log('Refreshing cache...');
   api.search(function(err, items) {
     if (err) {
+      console.error('Failed to find groups');
+      console.error(err);
       return; // Well, shoot... no point carrying on, now is there?
     }
+    console.log('Found ' + items.length + ' groups to refresh.');
 
     async.parallel(items.map(function(item) {
       return function(callback) {
         api.findGroupByID(item.id, function(err, freshItem) {
           if (err) {
             console.error('Failed to refresh ' + item.id);
+            console.error(err);
           }
           else if (freshItem) {
             console.log('Refreshed ' + item.id);
