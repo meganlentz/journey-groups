@@ -96,9 +96,15 @@
 			</div>
 		</div>
 
-		<div class="text-center">
-			<input type="submit" ng-click="updateResults()" class="btn btn-primary btn-find-a-group"
+		<div class="text-center find-container">
+			<input ng-if="!updating" type="submit" ng-click="updateResults()" class="btn btn-primary btn-find-a-group"
 				   value="Find a Group"/>
+
+      <div ng-if="updating" class="progress progress-striped active">
+        <div class="progress-bar progress-bar-striped active" role="progressbar">
+          <span>Searching for Groups...</span>
+        </div>
+      </div>
 		</div>
 
 	</form>

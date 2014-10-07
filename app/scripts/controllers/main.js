@@ -18,7 +18,9 @@ angular.module('jgroupsApp')
       childcare: false
     };
 
+    $scope.updating = false;
     $scope.updateResults = function() {
+      $scope.updating = true;
       delete $scope.results;
 
       ga('send', {
@@ -53,6 +55,7 @@ angular.module('jgroupsApp')
             resultsAnchor && resultsAnchor.scrollIntoView && resultsAnchor.scrollIntoView();
           }, 100);
         }
+        $scope.updating = false;
       });
     };
   });
