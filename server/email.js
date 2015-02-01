@@ -10,16 +10,16 @@ catch (e) {
 }
 
 var transporter = nodemailer.createTransport({
-	service: defaultConfig.EMAIL_SERVICE,
+	service: defaultConfig.EMAIL_SERVICE || process.env.EMAIL_SERVICE,
 	auth: {
-		user: defaultConfig.EMAIL_USERNAME,
-		pass: defaultConfig.EMAIL_PASSWORD
+		user: defaultConfig.EMAIL_USERNAME || process.env.EMAIL_USERNAME,
+		pass: defaultConfig.EMAIL_PASSWORD || process.env.EMAIL_PASSWORD
 	}
 });
 
 module.exports = function(options, callback) {
 	var mailOptions = {
-		from: defaultConfig.EMAIL_USERNAME,
+		from: defaultConfig.EMAIL_USERNAME || process.env.EMAIL_USERNAME,
 		replyTo: options.replyTo,
 		to: options.to,
 		subject: options.subject,
