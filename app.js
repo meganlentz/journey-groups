@@ -4,6 +4,7 @@ var express = require('express'),
   app = express();
 
 var api = require('./server/api'),
+  email = require('./server/email'),
   groupCache = require('./server/cache');
 groupCache.start();
 
@@ -42,7 +43,37 @@ app.post('/query', function(req, res) {
     return res.send({ success: !err, result: err || items });
   });
 });
+app.post('/contact', function(req, res) {
+  var body = _.defaults(req.body || {}, {
+    group_name: '',
+    owner_name: '',
+    owner_email_primary: '',
+    name: '',
+    email: '',
+    phone: ''
+  });
+  if (!body.email) {
+    return res.send({ success: false, result: 'You must provide an email and a group.' });
+  }
+
+  email({
+    to: body.owner_email_primary,
+    replyTo: body.email,
+    subject: '[JGROUPS] ' + (body.name || 'Someone') + ' Wants to Join Your JGroup!',
+    text: 'Hi ' + body.owner_name + '!\n\n'
+    + (body.name || 'Someone') + ' is interested in joining your JGroup! Would you reach out to them as soon as you can to connect and start having fun together?\n\n'
+    + '\tJGroup: ' + body.group_name + '\n'
+    + '\tName: ' + (body.name || 'Not Provided') + '\n'
+    + '\tEmail: ' + body.email + '\n'
+    + '\tPhone: ' + (body.phone || 'Not Provided') + '\n'
+    + '\nHave a blessed day!'
+    + '\nThe JTeam'
+  }, function(err) {
+    return res.send({ success: !err, result: err });
+  });
+});
 
 var server = app.listen(process.env.PORT || 5000, function() {
   console.log('Listening on port %d', server.address().port);
+  console.log('http://localhost:' + server.address().port + '/');
 });
