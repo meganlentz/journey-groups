@@ -97,6 +97,10 @@ app.post('/group', function(req, res) {
   delete data.youremail;
   delete data.yourphone;
 
+  data.public_search_listed = false;
+  data.listed = false;
+  data.group_type_id = '1';
+
   api.hitAPI({
     method: 'POST',
     url: 'https://yourjourney.ccbchurch.com/api.php?srv=create_group',

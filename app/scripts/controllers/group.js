@@ -17,8 +17,8 @@ angular.module('jgroupsApp')
 
     $scope.startAGroup = function() {
       $scope.saving = true;
-      $scope.group.public_search_listed = true;
-      $scope.group.listed = true;
+      $scope.group.public_search_listed = false;
+      $scope.group.listed = false;
       $scope.group.group_type_id = '1';
 
       $http({
