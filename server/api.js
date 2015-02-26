@@ -23,6 +23,8 @@ function hitAPI(opts, callback) {
   }), callback);
 }
 
+exports.hitAPI = hitAPI;
+
 exports.findGroupByID = function(groupID, callback) {
   var url = root + 'api.php?srv=group_profile_from_id&id=' + groupID;
   hitAPI({ url: url }, function(err, httpResponse, rawResponse) {

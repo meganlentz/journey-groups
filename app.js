@@ -72,6 +72,44 @@ app.post('/contact', function(req, res) {
     return res.send({ success: !err, result: err });
   });
 });
+app.post('/group', function(req, res) {
+  var params = [
+    'yourname', 'youremail', 'yourphone',
+    'name', 'description',
+    'udf_group_pulldown_1_id', 'udf_group_pulldown_2_id', 'udf_group_pulldown_3_id',
+    'meeting_day_id', 'meeting_time_id',
+    'childcare_provided',
+    'meeting_location_street_address', 'meeting_location_city', 'meeting_location_state', 'meeting_location_zip'
+  ];
+  var data = _.defaults(req.body || {});
+  for (var i = 0; i < params.length; i++) {
+    if (!data[ params[ i ] ]) {
+      return res.send({ success: false, result: 'Please fill out all fields.' });
+    }
+  }
+
+  data.description = data.description + '\n'
+  + '\n- Leader Name: ' + data.yourname
+  + '\n- Leader Email: ' + data.youremail
+  + '\n- Leader Phone: ' + data.yourphone;
+
+  delete data.yourname;
+  delete data.youremail;
+  delete data.yourphone;
+
+  api.hitAPI({
+    method: 'POST',
+    url: 'https://yourjourney.ccbchurch.com/api.php?srv=create_group',
+    form: data
+  }, function(err, httpResponse, body) {
+    if (err) {
+      return res.send({ success: !err, result: err });
+    }
+    return res.send({ success: true });
+  });
+
+
+});
 
 var server = app.listen(process.env.PORT || 5000, function() {
   console.log('Listening on port %d', server.address().port);

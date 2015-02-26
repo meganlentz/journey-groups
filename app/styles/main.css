@@ -81,6 +81,10 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
+textarea.form-control {
+  height: 100px;
+}
+
 .btn {
     font-size: 21px;
     padding: 14px 24px;
