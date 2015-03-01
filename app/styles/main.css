@@ -162,3 +162,8 @@ textarea.form-control {
 }
 #start-a-jgroup:hover:after { right: -30px; }
 #start-a-jgroup:hover:before { left: -30px; }
+
+.control-hint-text {
+  padding-left: 15px;
+  padding-right: 15px;
+}
