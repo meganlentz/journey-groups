@@ -78,7 +78,6 @@ app.post('/group', function(req, res) {
     'name', 'description',
     'udf_group_pulldown_1_id', 'udf_group_pulldown_2_id', 'udf_group_pulldown_3_id',
     'meeting_day_id', 'meeting_time_id',
-    'childcare_provided',
     'meeting_location_street_address', 'meeting_location_city', 'meeting_location_state', 'meeting_location_zip'
   ];
   var data = _.defaults(req.body || {});
