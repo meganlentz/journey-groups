@@ -87,6 +87,9 @@ app.post('/group', function(req, res) {
     }
   }
 
+  data.name = '[REVIEW] ' + data.name + ' (' + groupType(data.udf_group_pulldown_1_id)  + ')';
+
+  // TODO: Look up leader in CCB, rather than appending their information here.
   data.description = data.description + '\n'
   + '\n- Leader Name: ' + data.yourname
   + '\n- Leader Email: ' + data.youremail
@@ -118,3 +121,15 @@ var server = app.listen(process.env.PORT || 5000, function() {
   console.log('Listening on port %d', server.address().port);
   console.log('http://localhost:' + server.address().port + '/');
 });
+
+
+function groupType(id) {
+  id = '' + id;
+	switch (id) {
+    case '1': return 'Activity';
+    case '2': return 'Discussion';
+    case '3': return 'Care';
+    case '4': return 'Code Red';
+    default: return 'NextGen';
+  }
+}
