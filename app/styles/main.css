@@ -81,7 +81,11 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.jumbotron .btn {
+textarea.form-control {
+  height: 100px;
+}
+
+.btn {
     font-size: 21px;
     padding: 14px 24px;
 }
@@ -101,6 +105,19 @@ body {
     border-radius: 3px;
     border: 1px solid #eee;
     padding: 20px;
+}
+
+.find-container .progress {
+    height: 50px;
+}
+.find-container .progress-bar {
+    width: 100%;
+}
+.find-container .progress-bar span {
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.5;
+    line-height: 50px;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -129,4 +146,24 @@ body {
     .main-logo {
         background-image: url('../images/logo@2x.png');
     }
+}
+
+#start-a-jgroup {
+  position: relative;
+}
+#start-a-jgroup:hover:after, #start-a-jgroup:hover:before {
+  content: '♫';
+  width: 30px;
+  height: 30px;
+  display: block;
+  color: black;
+  position: absolute;
+  top: 0;
+}
+#start-a-jgroup:hover:after { right: -30px; }
+#start-a-jgroup:hover:before { left: -30px; }
+
+.control-hint-text {
+  padding-left: 15px;
+  padding-right: 15px;
 }

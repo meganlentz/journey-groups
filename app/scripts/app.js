@@ -26,6 +26,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/start-a-group', {
+        templateUrl: 'views/group.html',
+        controller: 'GroupCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
