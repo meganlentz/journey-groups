@@ -147,3 +147,18 @@ textarea.form-control {
         background-image: url('../images/logo@2x.png');
     }
 }
+
+#start-a-jgroup {
+  position: relative;
+}
+#start-a-jgroup:hover:after, #start-a-jgroup:hover:before {
+  content: '♫';
+  width: 30px;
+  height: 30px;
+  display: block;
+  color: black;
+  position: absolute;
+  top: 0;
+}
+#start-a-jgroup:hover:after { right: -30px; }
+#start-a-jgroup:hover:before { left: -30px; }

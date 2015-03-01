@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Want to start a J-Group?</h1>
+  <h1 id="start-a-jgroup">Do you want to start a J-Group?</h1>
 
   <form class="form-horizontal text-left" role="form">
 
@@ -65,7 +65,6 @@
 
       <div class="col-sm-8">
         <select ng-model="group.udf_group_pulldown_2_id" id="jg-people" class="form-control">
-          <option value="NONE">Anyone</option>
           <option value="3">Co-ed</option>
           <option value="1">Men</option>
           <option value="2">Women</option>
@@ -109,10 +108,10 @@
     </div>
 
     <div class="form-group">
-      <label for="jg-time" class="col-sm-4 control-label">What time of day?</label>
+      <label for="jg-time-id" class="col-sm-4 control-label">What time of day?</label>
 
       <div class="col-sm-8">
-        <select ng-model="group.meeting_time_id" id="jg-time" class="form-control">
+        <select ng-model="group.meeting_time_id" id="jg-time-id" class="form-control">
           <option value="1">Varies</option>
           <option value="2">Breakfast</option>
           <option value="3">Morning</option>

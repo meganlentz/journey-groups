@@ -10,10 +10,20 @@
 angular.module('jgroupsApp')
   .controller('GroupCtrl', function($scope, $http) {
     $scope.saving = false;
-    $scope.group = {};
+    $scope.group = newGroup();
     setTimeout(function() {
       $('#jg-yourname').focus();
     }, 500);
+
+    function newGroup() {
+      return {
+        udf_group_pulldown_1_id: '1',
+        udf_group_pulldown_2_id: '3',
+        udf_group_pulldown_3_id: '4',
+        meeting_day_id: '4',
+        meeting_time_id: '8'
+      }
+    }
 
     $scope.startAGroup = function() {
       $scope.saving = true;
@@ -31,7 +41,7 @@ angular.module('jgroupsApp')
         }
         else {
           alert('Created! We will be in touch soon!');
-          $scope.group = {};
+          $scope.group = newGroup();
         }
         $scope.saving = false;
       });
